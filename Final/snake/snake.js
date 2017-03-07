@@ -8,60 +8,32 @@ function Snake() {
     this.eatAt = 0;
     this.snakeLength = 0;
     this.tail = [];
+    // Spell out name here
+    //this.name = ['B', 'E', 'V', 'E', 'R', 'L', 'Y'];
+
     this.color = ['white', 'gold', 'cornflowerblue', 'lightseagreen', 'silver', 'tomato', 'slateblue', 'sandybrown', 'yellowgreen', 'hotpink'];
     this.display = function() {
         var index = floor((this.score % 500) / 50);
         fill(this.color[index]);
         stroke(this.color[index]);
+        
         //for the tail
         for (var i = 0; i < this.tail.length; i++) {
-            //rect(this.tail[i].x, this.tail[i].y, 20, 20);
-            fill('red');
-            textStyle(NORMAL);
-            textSize(18);
-            text('B', this.tail[i].x, this.tail[i].y);
+            //fill('red');
+            //textStyle(NORMAL);
+            //textSize(18);
+            //noStroke();
+            //text(this.name[i], this.tail[i].x, this.tail[i].y);
+            image(myImage[i], this.tail[i].x, this.tail[i].y, 35, 35)
         }
-        //for the head
 
-        /*
-            change appearance of snake here
-        */ 
-
-        if (this.yDir == 0) {
-            if (this.xDir == 1) {
-                //rect(this.x, this.y, 20, 20, 0, 10, 10, 0);
-
-                // draw letter T
-                fill('white');
-                textStyle(NORMAL);
-                textSize(18);
-                text('E', this.x, this.y);
-
-            } else {
-                //rect(this.x, this.y, 20, 20, 10, 0, 0, 10);
-                // draw letter T
-                fill('white');
-                textStyle(NORMAL);
-                textSize(18);
-                text('V', this.x, this.y);
-
-            }
-        } else if (this.xDir == 0) {
-            if (this.yDir == 1) {
-                //rect(this.x, this.y, 20, 20, 0, 0, 10, 10);
-                fill('white');
-                textStyle(NORMAL);
-                textSize(18);
-                text('E', this.x, this.y);
-            } else {
-                //rect(this.x, this.y, 20, 20, 10, 10, 0, 0);
-                fill('white');
-                textStyle(NORMAL);
-                textSize(18);
-                text('R', this.x, this.y);
-
-            }
-        }
+        // for the head
+        fill('white');
+        //textStyle(NORMAL);
+        //textSize(18);
+        //noStroke();
+        text('🎈', this.x, this.y);
+        
     };
 
     this.update = function() {
@@ -85,7 +57,7 @@ function Snake() {
     this.eat = function() {
         for (var i = 0; i < 6; i++) {
             var d = dist(this.x, this.y, foods[i].x, foods[i].y);
-            if (d < 5) {
+            if (d < 15) {
                 this.snakeLength++;
                 this.score += 10;
                 var fr = getFrameRate();
@@ -119,4 +91,9 @@ function Snake() {
             return false;
         }
     };
+    this.win = function() {
+        if (this.tail.length == myname.length) {
+            return true;
+        }
+    }
 }

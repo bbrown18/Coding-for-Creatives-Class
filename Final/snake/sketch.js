@@ -1,7 +1,20 @@
 var foods = [];
 var food, snake;
+var myImage = [];
+var wallpaper;
 
 var old_touchX, old_touchY;
+
+function preload() {
+    myImage[0] = loadImage('images/B.png');
+    myImage[1] = loadImage('images/E.png');
+    myImage[2] = loadImage('images/V.png');
+    myImage[3] = loadImage('images/E.png');
+    myImage[4] = loadImage('images/R.png');
+    myImage[5] = loadImage('images/L.png');
+    myImage[6] = loadImage('images/Y.png');
+    wallpaper = loadImage('images/wallpaper.png');
+}
 
 function setup() {
 	console.log("CREATED BY :  AKSHAY MAHAJAN");
@@ -34,9 +47,9 @@ function detectMob() {
 function draw() {
 
 
-    background(220,220,220);
-    stroke('white');
-    fill('white');
+    background(wallpaper);
+    //stroke('white');
+    //fill('white');
     textStyle(NORMAL);
     textSize(24);
     text('Score : ' + snake.score, 30, 30);
@@ -47,13 +60,13 @@ function draw() {
         ellipseMode(CORNER);
         if (i != 5 && (i + 1) % 2 == 0) {
             fill(255,0,255);
-            stroke(255,0,255);
+            //stroke(255,0,255);
         } else if ((i + 1) % 3 == 0) {
             fill(65,105,225)
-            stroke(65,105,225);
+            //stroke(65,105,225);
         } else {
-            fill('lightskyblue')
-            stroke('lightskyblue');
+            fill(0,128,0)
+            //stroke('lightskyblue');
         }
         ellipse(foods[i].x, foods[i].y, 20, 20);
     }
